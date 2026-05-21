@@ -38,6 +38,6 @@ jobs:
     with:
       image: ghcr.io/${{ github.repository }}
       digest: ${{ needs.get-digest.outputs.digest }}
-    secrets:
       registry-username: ${{ github.actor }}
+    secrets:
       registry-password: ${{ secrets.GITHUB_TOKEN }}
