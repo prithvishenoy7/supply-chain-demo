@@ -46,7 +46,7 @@ jobs:
 
       - name: Install Cosign
         if: github.event_name != 'pull_request'
-        uses: sigstore/cosign-installer@d7d6bc7d1f9f8be18c7c1eb02cf5258dec25e521  # v3.8.1
+        uses: sigstore/cosign-installer@d7d6bc7722e3daa8354c50bcb52f4837da5e9b6a  # v3.8.1
 
       - name: Sign image with Cosign (keyless)
         if: github.event_name != 'pull_request'
@@ -85,7 +85,7 @@ jobs:
           path: sbom.spdx.json
 
       - name: Scan for vulnerabilities with Grype
-        uses: anchore/scan-action@2c901dd5b1862b7de4e2adfa1be5e0fb36b09ee7  # v6.2.0
+        uses: anchore/scan-action@2c901ab7378897c01b8efaa2d0c9bf519cc64b9e  # v6.2.0
         with:
           image: ghcr.io/${{ github.repository }}:${{ github.sha }}
           fail-build: false
