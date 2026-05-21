@@ -15,8 +15,8 @@ jobs:
     permissions:
       contents: read
       packages: write
-      id-token: write    # used by Cosign signing (added in next step)
-      attestations: write  # used by SLSA provenance (added in next step)
+      id-token: write    # used by Cosign keyless signing
+      attestations: write  # used by SLSA provenance (Task 8)
 
     steps:
       - name: Checkout
