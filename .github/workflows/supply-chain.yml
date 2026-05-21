@@ -12,6 +12,8 @@ permissions:
 jobs:
   build-and-secure:
     runs-on: ubuntu-latest
+    outputs:
+      digest: ${{ steps.build.outputs.digest }}
     permissions:
       contents: read
       packages: write

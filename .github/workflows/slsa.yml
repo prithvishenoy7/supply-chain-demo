@@ -1,0 +1,24 @@
+name: SLSA Provenance
+
+on:
+  workflow_run:
+    workflows: ["Supply Chain Security Pipeline"]
+    types: [completed]
+    branches: [main]
+
+permissions: {}
+
+jobs:
+  provenance:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    permissions:
+      actions: read
+      id-token: write
+      contents: write
+    uses: slsa-framework/slsa-github-generator/.github/workflows/generator_container_slsa3.yml@v2.1.0
+    with:
+      image: ghcr.io/${{ github.repository }}
+      digest: ${{ github.event.workflow_run.outputs.digest }}
+    secrets:
+      registry-username: ${{ github.actor }}
+      registry-password: ${{ secrets.GITHUB_TOKEN }}
