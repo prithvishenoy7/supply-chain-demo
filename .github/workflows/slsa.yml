@@ -34,6 +34,7 @@ jobs:
       actions: read
       id-token: write
       contents: write
+      packages: write
     uses: slsa-framework/slsa-github-generator/.github/workflows/generator_container_slsa3.yml@v2.1.0
     with:
       image: ghcr.io/${{ github.repository }}
