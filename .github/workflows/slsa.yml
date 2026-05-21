@@ -40,5 +40,6 @@ jobs:
       image: ghcr.io/${{ github.repository }}
       digest: ${{ needs.get-digest.outputs.digest }}
       registry-username: ${{ github.actor }}
+      private-repository: true  # GHCR package is private; flip to false once package is made public
     secrets:
       registry-password: ${{ secrets.GITHUB_TOKEN }}
